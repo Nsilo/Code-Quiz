@@ -1,7 +1,8 @@
+var UserName = prompt("Type Name")
 
 function StartGame() {
-    
-        var timerCount = 100
+
+        var timerCount = 60
         var timerEl = document.querySelector("#timer")
 
         timerEl.textContent = timerCount
@@ -15,6 +16,8 @@ function StartGame() {
                 alert("Quiz Failed, Try Again")
             }
         }, 1000);
+
+        var QuizScore = 0
 
         var questions = [
             { 
@@ -33,9 +36,39 @@ function StartGame() {
                 a:"B"
             },
             { 
-                q: "Where is the correct place to insert a JavaScript?", 
+                q: "Where is the correct place to insert a JavaScript tag?", 
                 choices: ["The <body> section", "The <head> section", "Both the <head> section and the <body>"], 
                 a:"A"
+            },
+            { 
+                q: "JavaScript is interpreted by _________?", 
+                choices: ["Client", "Server", "Object"], 
+                a:"A"
+            },
+            { 
+                q: "Using _______ statement is how you test for a specific condition.", 
+                choices: ["Select", "If", "Switch"], 
+                a:"B"
+            },
+            { 
+                q: "The _______ method of an Array object adds and/or removes elements from an array.", 
+                choices: ["Shift", "Reverse", "Splice"], 
+                a:"C"
+            },
+            { 
+                q: "Which of the following best describes JavaScript?", 
+                choices: ["a scripting language precompiled in the browser.", "a low-level programming language.", "an object-oriented scripting language."], 
+                a:"C"
+            },
+            { 
+                q: "Which of the following are capabilities of functions in JavaScript?", 
+                choices: ["Return a value", "Accept parameters and Return a value", "Accept parameters"], 
+                a:"C"
+            },
+            { 
+                q: " __________ JavaScript is also called server-side JavaScript.", 
+                choices: ["Microsoft", "LiveWire", "Navigator"], 
+                a:"B"
             }]
 
             
@@ -51,7 +84,9 @@ function StartGame() {
 
             if (questionsPointer === questions.length) {
                 clearInterval(timer)
-                alert("You're Done With " + timerCount + " Time left!")
+                alert("You're Done With " + timerCount + " Seconds left!")
+                alert(UserName + " got " + QuizScore + " out of 10")
+                console.log(UserName + QuizScore)
                 return
             }
             question.textContent = questions[questionsPointer].q
@@ -64,36 +99,45 @@ function StartGame() {
 
         optionA.addEventListener("click", function () {
             if (optionA.getAttribute("data-answer") === questions[questionsPointer].a) {
+                alert("Correct Answer!")
                 console.log("This is correct")
+                QuizScore += 1
                 questionsPointer++
                 setQuestions()
             }  else {
                 alert("Incorrect Answer, Try Again")
                 console.log("this is wrong")
+                QuizScore -= 1
                 timerCount -= 10
             }
         })
 
         optionB.addEventListener("click", function () {
             if (optionB.getAttribute("data-answer") === questions[questionsPointer].a) {
+                alert("Correct Answer!")
                 console.log("This is correct")
+                QuizScore += 1
                 questionsPointer++
                 setQuestions()
             }  else {
                 alert("Incorrect Answer, Try Again")
                 console.log("this is wrong")
+                QuizScore -= 1
                 timerCount -= 10
             }
         })
 
         optionC.addEventListener("click", function () {
             if (optionC.getAttribute("data-answer") === questions[questionsPointer].a) {
+                alert("Correct Answer!")
                 console.log("This is correct")
+                QuizScore += 1
                 questionsPointer++
                 setQuestions()
             }  else {
                 alert("Incorrect Answer, Try Again")
                 console.log("this is wrong")
+                QuizScore -= 1
                 timerCount -= 10
             }
         })
