@@ -28,10 +28,15 @@ button {
     display: block;
   }
   
-  button:hover {
+button:hover {
     background-color: #5f0202;
     color: white;
   }
+
+button:active {
+    background-color: black;
+}
+
 
 ul{
     text-align: center;
